@@ -59,9 +59,22 @@ the marketing strategy actually worked.
 z<- c(206,	155,	246,	255,	196,	366,	270,	172,	262,	262, 224,	263,	296,	325,	142,	202,	322,	250,	456,	330, 186,	112,	115,	127,	266,	266,	415,	316,325, 292, 217,	235,	  72,	177,	281,	210,	192,	202, 49,	316, 261,	352,	 56,	311,	346, 78,	441,	364,	211,	231)
 
 # Create the function.
-> getmode <- function(z) {
+getmode <- function(z) {
  uniqv <- unique(z)
 uniqv[which.max(tabulate(match(z, uniqv)))]
 result <- getmode(z)
 print(result)
+
+Mode = function(x){ 
+     ta = table(x)
+     tam = max(ta)
+     if (all(ta == tam))
+         mod = NA
+     else
+         if(is.numeric(x))
+             mod = as.numeric(names(ta)[ta == tam])
+    else
+         mod = names(ta)[ta == tam]
+     return(mod) }
+Mode(z)
 
