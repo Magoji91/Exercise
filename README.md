@@ -80,6 +80,9 @@ Obs.: The sum of the residuals always equals zero
 Rejeita-se H0	 /  Erro do tipo I	            //  sem erro
 Não se rejeita /  H0	sem erro	              //  Erro do tipo II
 
+Type I Error: The incorrect rejection of a true null hypothesis or a false positive.
+Type II Error: The incorrect failure of rejection of a false null hypothesis or a false negative.
+
 lm(formula = Age ~ Str)
 
 Obs.: Por exemplo, vamos supor que o nível de significância foi fixado em {\displaystyle \alpha } \alpha = 0,05. Um valor-p igual a 0,20 indica que nós teríamos rejeitado H0 se tivéssemos escolhido um nível de significância de 0,20, ao menos. Como escolhemos {\displaystyle \alpha } \alpha = 0,05, não rejeitamos H0. Isto leva a uma regra simplista, mas usual, onde rejeitamos H0 se o valor-p é menor que {\displaystyle \alpha } \alpha e não rejeitamos H0 caso contrário.
@@ -88,9 +91,14 @@ A small p-value (typically ≤ 0.05) indicates strong evidence against the null 
 
 A large p-value (> 0.05) indicates weak evidence against the null hypothesis, so you fail to reject the null hypothesis.
 
-p-values very close to the cutoff (0.05) are considered to be marginal (could go either way). Always report the p-value so your readers can draw their own conclusions.
+Obs.: p-values very close to the cutoff (0.05) are considered to be marginal (could go either way). Always report the p-value so your readers can draw their own conclusions.
 
 Obs.:You randomly sample some delivery times and run the data through the hypothesis test, and your p-value turns out to be 0.001, which is much less than 0.05. In real terms, there is a probability of 0.001 that you will mistakenly reject the pizza place’s claim that their delivery time is less than or equal to 30 minutes. Since typically we are willing to reject the null hypothesis when this probability is less than 0.05, you conclude that the pizza place is wrong; their delivery times are in fact more than 30 minutes on average, and you want to know what they’re gonna do about it! (Of course, you could be wrong by having sampled an unusually high number of late pizza deliveries just by chance.)
+
+Obs.: You can think of it as “reject” vs “accept” in your mind, as long as you remind yourself that the result is probabilistic and that even an “accepted” null hypothesis still has a small probability of being wrong.
+
+Obs.: For example, if your study has 80% power, it has an 80% chance of detecting an effect that exists. Let this point be a reminder that when you work with samples, nothing is guaranteed! When an effect actually exists in the population, your study might not detect it because you are working with a sample. Samples contain sample error, which can occasionally cause a random sample to misrepresent the population.
+
 
 Coefficient - t value: measure of how many standard deviations our coefficient estimate is far away from 0. We want it to be far away from zero as this would indicate we could reject the null hypothesis - that is, we could declare a relationship between speed and distance exist. In our example, the t-statistic values are relatively far away from zero and are large relative to the standard error, which could indicate a relationship exists. In general, t-values are also used to compute p-values.
 
