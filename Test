@@ -1,0 +1,57 @@
+Covariance, correlation - t-test
+x<-c(0,2,4,5,7,8,10)
+y<-c(4,3,1,1,2,1,0)
+mean(x)
+mean(y)
+sd(x)
+sd(y)
+var(x)
+var(y)
+cov(x,y)
+cor(x,y)
+
+x<-c(0,2,4,6,8)
+y<-c(0,1,2,3,4)
+mean(x)
+mean(y)
+sd(x)
+sd(y)
+var(x)
+var(y)
+cov(x,y)
+cor(x,y)
+
+Thus our correlation coefficient is 1. This means that the data = ”fully” linearly correlated, or that there is a function y = ax + b that translated the x data into the y data.
+
+x<-c(77,65,73,58,63,49,51,82,103,69)
+y<-c(102,73,56,55,83,72,88,70,81,85,44,71,62,78,75)
+mean(x)
+mean(y)
+sd(x)
+sd(y)
+var(x)
+var(y)
+cov(x,y)
+cor(x,y)
+t.test(x, y, alternative = "two.sided", var.equal = FALSE)
+
+Obs.:We reject the null hypothesis for too small values of T. Then, P(T(23) ≤ tα; H0) =
+P(T(23) ≥ −tα; H0) = 0.10. By looking in the table we find −tα = 1.32, thus tα = −1.32.
+Our t-value is not smaller than tα, we cannot reject the null hypothesis. Therefore we cannot
+prove that people of age 40 are on average heavier than people of age 30.
+
+x<-c(2,3,1,4,6,2,12,8)
+y<-c(3,2,0,4,7,4,10,10)
+mean(x)
+mean(y)
+var(x)
+var(y)
+sd(x)
+sd(y)
+cov(x,y)
+cor(x,y)
+t.test(x, y, paired = TRUE, alternative = "two.sided")
+We reject our null hypothesis for too small values of T. Then, P(T(7) ≤ tα; H0) = P(T(7) ≥
+−tα) = 0.05. By looking in the table we find −tα = 1.89, so tα = −1.89. Since our t-value
+is not smaller than tα we cannot reject the null hypothesis. Therefore, we cannot prove that
+the marketing strategy actually worked.
