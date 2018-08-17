@@ -115,6 +115,14 @@ A = matrix(
             ncol=2,              # number of columns 
              byrow = TRUE)        # fill matrix by rows 
 chisq.test(A) 
+
+A = matrix( 
+         c(106, 119, 25, 117, 141, 92), # the data elements 
+         nrow=2,              # number of rows 
+         ncol=3,              # number of columns 
+          byrow = TRUE)        # fill matrix by rows 
+chisq.test(A) 
+
  
       
 
