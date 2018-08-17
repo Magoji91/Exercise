@@ -109,6 +109,12 @@ Men	  207	  282   489
 Women	231	  242   962
       438   524
 
-  
+A = matrix( 
+          c(207, 282, 231, 242), # the data elements 
+            nrow=2,              # number of rows 
+            ncol=2,              # number of columns 
+             byrow = TRUE)        # fill matrix by rows 
+chisq.test(A) 
+ 
       
 
