@@ -394,4 +394,25 @@ vcov(fit) # covariance matrix for model parameters
 # Se H0 não for rejeitada, então é o mesmo que dizer que o conjunto de variáveis explicativas contribuem pouco para a explicação da variação da variável dependente. 
 # Ao nível de significância de 0.05, rejeitamos a hipótese da regressão não ser significativa. Então há evidência para afirmar que existe um relacionamento linear entre o conjunto de variáveis explicativas e o volume de vendas. 
 
- 
+
+
+library(readxl)
+D <- read_excel("C:/Users/smsanda/Pictures/D.xlsx")
+View(D)
+fit <- lm(y ~ x1 + x2, data=D)
+summary(fit)
+
+#The models are fitted with
+fit1 <- lm(y ~ x1, data=D)
+fit2 <- lm(y ~ x2, data=D)
+confint(fit1)
+confint(fit2)
+
+anova(fit)
+
+
+
+
+#Por essa tabela, nota-se que a variável Refrigerante (coeficiente BETA igual a 0,716272) contribui mais para a variação do Tempo do que a variável Distância (coeficiente BETA igual a 0,301308).
+#Pode-se observar que as duas variáveis independentes estão pouco correlacionadas, visto que o coeficiente de correlação foi igual a - 0,824.
+#Uma correlação parcial é aquela existente entre uma variável independente e uma dependente, quando considerando a presença das outras. Por exemplo, o comprimento do cabelo pode estar correlacionado à altura das pessoas; no entanto, essa correlação poderá diminuir e mesmo desaparecer se a influência do sexo for removida, uma vez que mulheres são geralmente menores e são prováveis de terem cabelos compridos.
