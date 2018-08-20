@@ -362,3 +362,35 @@ D <- data.frame( y<- c(1, 2, 3, 4),
 fit <- lm(y ~ x1 + x2, data=D)
 summary(fit) # show results
 #Nenhum parametro e significativo com confiança de 90% (não é significativo, pois inclui zero). 
+
+D <- data.frame( y<- c(9, 6, 4, 3, 3, 5, 8, 2, 7, 4),
+                 x1<- c(6, 5, 3, 1, 4, 3, 6, 2, 4, 2),
+                 x2<- c(3, 2, 2, 1, 1, 3, 3, 1, 2, 2))  
+
+# Multiple Linear Regression Example 
+fit <- lm(y ~ x1 + x2, data=D)
+summary(fit) # show results
+
+#A equação de regressão linear múltipla é determinada por meio dos coeficientes.
+# Coeficiente de determinação (R^2)
+# Correlação linear (R)
+# coeficiente de determinação ajustado(R¯ 2)
+
+D <- data.frame( y<- c(9, 6, 4, 3, 3, 5, 8, 2, 7, 4),
+                 x1<- c(6, 5, 3, 1, 4, 3, 6, 2, 4, 2),
+                 x2<- c(3, 2, 2, 1, 1, 3, 3, 1, 2, 2))  
+
+# Multiple Linear Regression Example 
+fit <- lm(y ~ x1 + x2, data=D)
+summary(fit) # show results
+coefficients(fit) # model coefficients
+fitted(fit) # predicted values
+residuals(fit) # residuals
+anova(fit) # anova table 
+vcov(fit) # covariance matrix for model parameters 
+
+#Tobs=  0.262712/0.9374  = -0.28 ∉ RC, logo não rejeitamos H0, ao nível de significância de 0.05. 
+# Devemos sempre rejeitar H0 para valores de F muito grandes. 
+# Se H0 não for rejeitada, então é o mesmo que dizer que o conjunto de variáveis explicativas contribuem pouco para a explicação da variação da variável dependente. 
+# Ao nível de significância de 0.05, rejeitamos a hipótese da regressão não ser significativa. Então há evidência para afirmar que existe um relacionamento linear entre o conjunto de variáveis explicativas e o volume de vendas. 
+
