@@ -120,3 +120,12 @@ F-statistic is a good indicator of whether there is a relationship between our p
 Reject the null when your p value is smaller than your alpha level. You should not reject the null if your critical f value is smaller than your F Value, unless you also have a small p-value.
 
 anova(ex)
+
+Regressão Múltipla:a variável dependente (Y) será determinada por mais de uma variável independente (X). Genericamente, um
+modelo de regressão linear múltipla com k variáveis independentes e p parâmetros (p=k+1) pode ser representado por:
+Alfa = valor esperado de Y quando todos as variáveis independentes forem nulas;
+
+Beta 1 = variação esperada em Y dado um incremento unitário em X1,mantendo-se constantes todas as demais variáveis independentes;
+
+Betak = variação esperada em Y dado um incremento unitário em X1, mantendo-se constantes todas as demais variáveis independentes;
+ei é o erro não explicado pelo modelo.
