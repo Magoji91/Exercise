@@ -130,6 +130,149 @@ A = matrix(
               byrow = TRUE)        # fill matrix by row
 chisq.test(A)
 
- 
-      
+Multiple linear regression model
+
+  Calculate the parameter estimates (β0, β1, β2, and σ2), in addition find the usual 95% confidence intervals for β0, β1, and β2.
+You can copy the following lines to R to load the data:
+
+D <- data.frame(
+x1=c(0.58, 0.86, 0.29, 0.20, 0.56, 0.28, 0.08, 0.41, 0.22, 0.35,
+0.59, 0.22, 0.26, 0.12, 0.65, 0.70, 0.30, 0.70, 0.39, 0.72,
+0.45, 0.81, 0.04, 0.20, 0.95),
+x2=c(0.71, 0.13, 0.79, 0.20, 0.56, 0.92, 0.01, 0.60, 0.70, 0.73,
+0.13, 0.96, 0.27, 0.21, 0.88, 0.30, 0.15, 0.09, 0.17, 0.25,
+0.30, 0.32, 0.82, 0.98, 0.00),
+y=c(1.45, 1.93, 0.81, 0.61, 1.55, 0.95, 0.45, 1.14, 0.74, 0.98,
+1.41, 0.81, 0.89, 0.68, 1.39, 1.53, 0.91, 1.49, 1.38, 1.73,
+1.11, 1.68, 0.66, 0.69, 1.98)
+)
+
+# Multiple Linear Regression Example 
+fit <- lm(y ~ x1 + x2, data=D)
+summary(fit) # show results
+
+# The error variance estimate is σ2 = 0.112. The confidence intervals can either be
+calculated using the second column of the coefficient matrix, and the value of t0.975
+(with degrees of freedom equal 22), or directly in R:
+confint(fit, level=0.95) # CIs for model parameters 
+
+# Other useful functions 
+coefficients(fit) # model coefficients
+fitted(fit) # predicted values
+residuals(fit) # residuals
+anova(fit) # anova table 
+vcov(fit) # covariance matrix for model parameters 
+influence(fit) # regression diagnostics
+
+# diagnostic plots 
+layout(matrix(c(1,2,3,4),2,2)) # optional 4 graphs/page 
+
+#Since the confidence interval for β2 cover zero (and the p-value is much larger than 0.05), the parameter should be removed from the model to get the simpler model
+fit <- lm(y ~ x1, data=D)
+summary(fit)
+
+#We are interested in inspecting a q-q plot of the residuals and a plot of the residuals as a function of the fitted values. There are no strong evidence against the assumptions, the qq-plot is are a straight
+line and there are no obvious dependence between the residuals and the fitted values, and we conclude that the assumptions are fulfilled.
+
+par(mfrow=c(1,2))
+qqnorm(fit$residuals, pch=19)
+qqline(fit$residuals)
+plot(fit$fitted.values, fit$residuals, pch=19,
+xlab="Fitted.values", ylab="Residuals")
+
+x1new <- seq(0,1,by=0.01)
+pred <- predict(fit, newdata=data.frame(x1=x1new),
+interval="prediction")
+conf <- predict(fit, newdata=data.frame(x1=x1new),
+interval="confidence")
+plot(x1new, pred[ ,"fit"], type="l", ylim=c(0.1,2.4),
+xlab="x1", ylab="Prediction")
+lines(x1new, conf[ ,"lwr"], col="green", lty=2)
+lines(x1new, conf[ ,"upr"], col="green", lty=2)
+lines(x1new, pred[ ,"lwr"], col="red", lty=2)
+lines(x1new, pred[ ,"upr"], col="red", lty=2)
+legend("topleft", c("Prediction","Confidence band","Prediction band"),
+lty=c(1,2,2), col=c(1,3,2), cex=0.7)
+
+D <- data.frame(
+y=c(9.29,12.67,12.42,0.38,20.77,9.52,2.38,7.46),
+x1=c(1.00,2.00,3.00,4.00,5.00,6.00,7.00,8.00),
+x2=c(4.00,12.00,16.00,8.00,32.00,24.00,20.00,28.00)
+)
+
+#The data is plotted with
+par(mfrow=c(1,2))
+plot(D$x1, D$y, xlab="x1", ylab="y")
+plot(D$x2, D$y, xlab="x1", ylab="y")
+
+#Estimate the parameters for the two models
+Yi = β0 + β1x1,i + εi, εi ∼ N(0, σ2), and Yi = β0 + β1x2,i + εi, εi ∼ N(0, σ2), and report the 95% confidence intervals for the parameters. Are any of the
+parameters significantly different from zero on a 5% confidence level?
+
+#The models are fitted with
+fit1 <- lm(y ~ x1, data=D)
+fit2 <- lm(y ~ x2, data=D)
+confint(fit1)
+
+#since all confidence intervals cover zero we cannot reject that the parameters are in fact zero, and we would conclude neither x1 nor x2 explain the variations in y
+
+Estimate the parameters for the model
+Yi = β0 + β1x1,i + β2x2,i + εi, εi ∼ (N(0, σ2), (6-8) and go through the steps of Method 6.16 (use confidence level 0.05 in all tests).
+#The model is fitted with
+fit <- lm(y ~ x1 + x2, data=D)
+summary(fit)
+
+#Before discussing the parameter let’s have a look at the residuals:
+par(mfrow=c(1,2))
+qqnorm(fit$residuals)
+qqline(fit$residuals)
+plot(fit$fitted.values, fit$residuals,
+xlab="Fitted values", ylab="Residuals")
+
+#The are no obvious structures in the residuals as a function of the fitted values and also there does not seem be be serious departure from normality, but lets try to look
+at the residuals as a function of the independent variables anyway.
+
+par(mfrow=c(1,2))
+plot(D$x1, fit$residuals, xlab="x1", ylab="Residuals")
+plot(D$x2, fit$residuals, xlab="x1", ylab="Residuals")
+
+#the plot of the residuals as a function of x1 suggest that there could be a quadratic dependence.
+
+#Now include the quadratic dependence of x1
+D$x3 <- D$x1^2
+fit3 <- lm(y ~ x1 + x2 + x3, data=D)
+summary(fit3)
+
+#we can see that all parameters are still significant, and we can do the residual analysis of the resulting model.
+par(mfrow=c(2,2))
+qqnorm(fit3$residuals)
+qqline(fit3$residuals)
+plot(fitted.values(fit3), fit3$residuals,
+xlab="Fitted values", ylab="Residuals")
+plot(D$x1, fit3$residuals, xlab="x1", ylab="Residuals")
+plot(D$x2, fit3$residuals, xlab="x2", ylab="Residuals")
+
+#Find the standard error for the line, and the confidence and prediction intervals for the line for the points (min(x1), min(x2)), (x¯1, x¯2), (max(x1), max(x2)).
+
+## New data
+Dnew <- data.frame(x1=c(min(D$x1),mean(D$x1),max(D$x1)),
+x2=c(min(D$x2),mean(D$x2),max(D$x2)),
+x3=c(min(D$x1),mean(D$x1),max(D$x1))^2)
+
+## standard error for the line
+predict(fit3, newdata=Dnew, se=TRUE)$se
+
+## Confidence interval
+predict(fit3, newdata=Dnew, interval="confidence")
+
+## Confidence interval
+predict(fit3, newdata=Dnew, interval="confidence")
+
+#Plot the observed values together with the fitted values (e.g. as a functionof x1).
+points(D$x1, fit3$fitted.values, pch="+", cex=2)
+legend("topright", c("y1","fitted.values"), pch=c(19,3), col=c(2,1))
+
+Notice that we have an almost perfect fit when including x1, x2 and x1^2 in the model,  while neither x1 nor x2 alone could predict the outcomes.
+
+
 
