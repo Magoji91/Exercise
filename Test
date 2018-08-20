@@ -394,3 +394,4 @@ vcov(fit) # covariance matrix for model parameters
 # Se H0 não for rejeitada, então é o mesmo que dizer que o conjunto de variáveis explicativas contribuem pouco para a explicação da variação da variável dependente. 
 # Ao nível de significância de 0.05, rejeitamos a hipótese da regressão não ser significativa. Então há evidência para afirmar que existe um relacionamento linear entre o conjunto de variáveis explicativas e o volume de vendas. 
 
+ 
