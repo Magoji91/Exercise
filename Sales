@@ -4,7 +4,15 @@ D <- data.frame( y<- c(350.000, 399.765, 429.000, 435.000, 433.000),
                  
 summary(D) # SHOW RESULTS
 
-# CALCULATE THE CONFIDANCE
+confint(fit1)
+confint(fit2)
+
+a = Y-bX1-b2X2
+a = 409.353-(34.356085)*15-(-3.657213)-45.4
+a = 60.049
+
+anova(fit)
+
 # If the confidence interval (with your chosen level of confidence) includes 0, that implies you think 0 is a reasonable possibility for the true value of the difference. In general, by 'significant' people usually mean that they no longer believe the null hypothesis (0) is a reasonable possibility. Note that if a 95% CI doesn't include 0, the p-value would be <.05, which is the conventional cutoff for 'significance'.
 
 #If a confidence interval for a mean difference includes 0, the data are consistent with a population mean difference of 0
@@ -23,13 +31,6 @@ This is just a special case of the general rule stating that the null hypothesis
 #For example: the P value (0.031) is less than the significance level (0.05), which indicates that our results are statistically significant. Similarly, our 95% confidence interval [267 394] does not include the null hypothesis mean of 260 and we draw the same conclusion.
 
 #The null hypothesis attempts to show that no variation exists between variables or that a single variable is no different than its mean. It is presumed to be true until statistical evidence nullifies it for an alternative hypothesis.
-
-confint(fit1)
-confint(fit2)
-
-a = Y-bX1-b2X2
-a = 409.353-(34.356085)*15-(-3.657213)-45.4
-a = 60.049
 
 #Okay, let’s say you interviewed a potential salesperson and found that they had 13 ears of education (they took 1 year of college after high school) and they scored 49 on hat would be your prediction of how much money in sales this person would bring in on an annual basis? 
 
@@ -52,3 +53,15 @@ maior que 1.X vezes maior/menor que a variabilidade dentro dos grupos.
 # Example: Uma vez que o p-value é aproximadamente zero⇒ rejeitamos a hipótese nula de igualdade de médias para qualquer nível de significância.Assim, a ANOVA permite concluir: para q.q. nível de significância, as médias dos vários grupos não são todas iguais, o que quer dizer que existem diferenças significativas no desempenho da aprendizagem das três listas de palavras. 
 
 # Localizar as diferenças através de técnicas de comparações múltiplas: métodos de Tukey, Scheffé, Bonferroni: Comparar os grupos de dois a dois por meio de intervalos deconfiança para a diferença. Se o intervalo não contém o zero, podemos obter conclusões sobre a razão da rejeição.
+
+#If the P value for the F-test of overall significance test is less than your significance level, you can reject the null-hypothesis and conclude that your model provides a better fit than the intercept-only model.
+
+#In the intercept-only model, all of the fitted values equal the mean of the response variable. Therefore, if the P value of the overall F-test is significant, your regression model predicts the response variable better than the mean of the response.
+
+#If the P value for the overall F-test is less than your significance level, you can conclude that the R-squared value is significantly different from zero.
+
+#R-squared measures the strength of the relationship between your model and the dependent variable. 
+
+#R2: can be arbitrarily close to 1 when the model is totally wrong. 
+
+#The p value tells you the probability of obtaining an F value as extreme or more extreme as the one observed under the assumption that the null hypothesis is true. 
