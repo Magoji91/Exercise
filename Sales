@@ -1,1 +1,54 @@
+D <- data.frame( y<- c(350.000, 399.765, 429.000, 435.000, 433.000),
+                 x1<- c(12, 14, 15, 16, 18),
+                 x2<- c(32, 35, 45, 50, 65)) 
+                 
+summary(D) # SHOW RESULTS
 
+# CALCULATE THE CONFIDANCE
+# If the confidence interval (with your chosen level of confidence) includes 0, that implies you think 0 is a reasonable possibility for the true value of the difference. In general, by 'significant' people usually mean that they no longer believe the null hypothesis (0) is a reasonable possibility. Note that if a 95% CI doesn't include 0, the p-value would be <.05, which is the conventional cutoff for 'significance'.
+
+#If a confidence interval for a mean difference includes 0, the data are consistent with a population mean difference of 0
+# If the difference is 0, the population means are equal.
+#If the confidence interval for a difference excludes 0, the data are not consistent with equal population means.
+#Therefore, one of the first things to look at is whether a confidence interval for a difference contains 0. If 0 is not in the interval, a difference has been established. 
+#If a CI contains 0, then a difference has not been established. 
+#When we start talking about significance tests, we'll refer to differences that exclude 0 as a possibility as statistically significant. For the moment, we'll use the term sparingly.
+
+#The shorter the confidence interval, the less likely it is to contain the quantity being estimated. The longer the interval, the more likely to contain the quantity being estimated.
+
+# When the hypothesized value is zero then there is a simple relationship between hypothesis testing and confidence intervals:
+If the interval contains zero then the null hypothesis cannot be rejected at the stated level of confidence. If the interval does not contain zero then the null hypothesis can be rejected.
+This is just a special case of the general rule stating that the null hypothesis can be rejected if the interval does not contain the hypothesized value of the parameter and cannot be rejected if the interval contains the hypothesized value. 
+
+#For example: the P value (0.031) is less than the significance level (0.05), which indicates that our results are statistically significant. Similarly, our 95% confidence interval [267 394] does not include the null hypothesis mean of 260 and we draw the same conclusion.
+
+#The null hypothesis attempts to show that no variation exists between variables or that a single variable is no different than its mean. It is presumed to be true until statistical evidence nullifies it for an alternative hypothesis.
+
+confint(fit1)
+confint(fit2)
+
+a = Y-bX1-b2X2
+a = 409.353-(34.356085)*15-(-3.657213)-45.4
+a = 60.049
+
+#Okay, let’s say you interviewed a potential salesperson and found that they had 13 ears of education (they took 1 year of college after high school) and they scored 49 on hat would be your prediction of how much money in sales this person would bring in on an annual basis? 
+
+Y = 60,049.195 + (34,356.085)(13) + (-3,657.213)(49)
+
+So, given a job applicant with 13 years of education completed and who received a
+motivation score of 49 on the Higgins Motivation Scale, our single best prediction of how
+uch this person will earn for our dealership is $685,881.74. 
+
+anova(fit) #Análise da variância: estimativas de dispersão/variAncia
+
+#I-) Identificar a existência de pelo menos uma diferença¸ a entre grupos
+#II-) identificar quais as medias que são diferentes, controlando o n ˜ ´ıvel global de significancia. 
+
+#Teste F: Sob a hipotese nula, que as medias são iguais, tanto SE^2 quanto SD^2 estimam a variancia comum σ2, e F deve estar proximo de 1.
+
+#Se existe uma diferenc¸a entre as populaçoes, entao a variancia entre os grupos e maior que a vari ´ ancia dentro dos grupos, e ˆ F e´
+maior que 1.X vezes maior/menor que a variabilidade dentro dos grupos.
+
+# Example: Uma vez que o p-value é aproximadamente zero⇒ rejeitamos a hipótese nula de igualdade de médias para qualquer nível de significância.Assim, a ANOVA permite concluir: para q.q. nível de significância, as médias dos vários grupos não são todas iguais, o que quer dizer que existem diferenças significativas no desempenho da aprendizagem das três listas de palavras. 
+
+# Localizar as diferenças através de técnicas de comparações múltiplas: métodos de Tukey, Scheffé, Bonferroni: Comparar os grupos de dois a dois por meio de intervalos deconfiança para a diferença. Se o intervalo não contém o zero, podemos obter conclusões sobre a razão da rejeição.
