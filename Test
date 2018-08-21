@@ -408,11 +408,8 @@ fit2 <- lm(y ~ x2, data=D)
 confint(fit1)
 confint(fit2)
 
+
 anova(fit)
-
-
-
-
 #Por essa tabela, nota-se que a variável Refrigerante (coeficiente BETA igual a 0,716272) contribui mais para a variação do Tempo do que a variável Distância (coeficiente BETA igual a 0,301308).
 #Pode-se observar que as duas variáveis independentes estão pouco correlacionadas, visto que o coeficiente de correlação foi igual a - 0,824.
 #Uma correlação parcial é aquela existente entre uma variável independente e uma dependente, quando considerando a presença das outras. Por exemplo, o comprimento do cabelo pode estar correlacionado à altura das pessoas; no entanto, essa correlação poderá diminuir e mesmo desaparecer se a influência do sexo for removida, uma vez que mulheres são geralmente menores e são prováveis de terem cabelos compridos.
