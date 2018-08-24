@@ -1,0 +1,82 @@
+The one-way Analysis of Variance (ANOVA) is used with one categorical independent variable and one continuous variable. The independent variable can consist of any number of groups (levels).
+
+OBS.: The t-test, which is often used in similar experiments with two group, is only appropriate for situations where there are only two levels of one independent variable. When there is a categorical independent variable and a continuous dependent variable and there are more than two levels of the independent variable and/or there is more than one independent variable (a case that would require a multi-way, as opposed to one way ANOVA), then the appropriate analysis is the work horse of experimental psychology research, the analysis of variance.
+
+In the case where there are more than two levels of the independent variable the analysis goes through two steps.
+
+I-) First, we carry out an over-all F test to determine if there is any significant difference existing among any of the means.
+II-) If this F score is statistically significant, then we carry out a second step in which we compare sets of two means at a time in order to determine specifically, where the significance difference lies. 
+
+The "Between Groups" row represents what is often called "explained variance" or "systematic variance". We can think of this as variance that is due to the independent variable, the difference among the three groups. For example the difference between a person's score in group one and a person's score in group two would represent explained variance.
+
+The "Within Groups" variance represents what is often called "error variance". This is the variance within your groups, variance that is not due to the independent variable. For example, the difference between one person in group one and another person in group one would represent error variance
+
+First, which means are significantly different from which other means and, second what were the actual scores of the group?
+To answer the pair comparisons questions we run a series of Tukey's post-hoc tests, which are like a series of t-tests. The post-hoc tests are more stringent than the regular t-tests however, due to the fact that the more tests you perform the more likely it is that you will find a significant difference just by chance. Your post hoc tests which statistical programs often presented in a table, might look something like this:
+
+y<-c(1,2,3,4,5,6,7,8)
+cs<-c(7,4,6,8,6,6,2,9)
+rs<-c(5,5,3,4,4,7,2,2)
+ns<-c(2,4,7,1,2,1,5,5)
+
+mean(cs)
+var(cs)
+sd(cs)
+sum(cs)
+sum(cs)^2
+
+
+mean(rs)
+var(rs)
+sd(rs)
+sum(rs)
+sum(rs)^2
+rs^2
+
+mean(ns)
+var(ns)
+sd(ns)
+sum(ns)
+sum(ns)^2
+ns^2
+
+n<-8
+n2<-n*3
+
+SST<- sum(cs^2)+ sum(rs^2)+ sum(ns^2)-(sum(cs)+sum(rs)+sum(ns))^2/n2
+SSA<-(sum(cs)^2+sum(rs)^2+sum(ns)^2)/n-(sum(cs)+sum(rs)+sum(ns))^2/n2
+SSW<-SST-SSA
+
+with df = (2,21) F must be at least 3.4668 to reach p < .05, so F score is statistically significant)
+
+Interpretation: Susan can conclude that her hypothesis may be supported. The means are as she predicted, in that the constant music group has the highest score. However, the signficant F only indicates that at least two means are signficantly different from one another, but she can't know which specific mean pairs significantly differ until she conducts a post-hoc analysis (e.g., Tukey's HSD).
+
+
+
+D<-data.frame(y<-c(1,2,3,4,5,6,7,8),cs<-c(7,4,6,8,6,6,2,9),
+rs<-c(5,5,3,4,4,7,2,2),
+ns<-c(2,4,7,1,2,1,5,5))
+
+aov.ex1 = aov(y~cs+rs+ns,data=D)  #do the analysis of variance
+summary(aov.ex1)                                    #show the summary table
+print(model.tables(aov.ex1,"means"),digits=3)       #report the means and the number of subjects/cell
+boxplot(y~cs+rs+ns,data=D)        #graphical summary
+
+D2<-data.frame(y<-c(1,2,3,4,5,6,7,8),cs<-c(7,4,6,8,6,6,2,9),
+rs<-c(5,5,3,4,4,7,2,2),
+ns<-c(2,4,7,1,2,1,5,5))
+
+aov.ex2 = aov(cs~rs*ns,data=D2)         #do the analysis of variance
+summary(aov.ex2)                                    #show the summary table
+print(model.tables(aov.ex2,"means"),digits=3)       #report the means and the number of subjects/cell
+boxplot(y~cs*rs*ns,data=D2) #graphical summary of means of the 4 cells
+
+
+D3<-data.frame(y<-c(1,2,3,4,5,6,7,8),cs<-c(7,4,6,8,6,6,2,9),
+rs<-c(5,5,3,4,4,7,2,2),
+ns<-c(2,4,7,1,2,1,5,5))
+aov.ex3 = aov(y~cs*rs*ns,data=D3)
+summary(aov.ex3)
+print(model.tables(aov.ex3,"means"),digits=3)       #report the means and the number of subjects/cell
+boxplot(y~cs*rs*ns,data=D3)          #graphical output
+
