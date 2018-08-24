@@ -73,18 +73,10 @@ boxplot(y~cs*rs*ns,data=D2) #graphical summary of means of the 4 cells
 
 fit = lm(mpg ~ wt, mtcars)
 summary(fit)$r.square
-[1] 0.7528328
-> sse = sum((fitted(fit) - mean(mtcars$mpg))^2)
-> ssr = sum((fitted(fit) - mtcars$mpg)^2)
-> 1 - (ssr/(sse + ssr))
+sse = sum((fitted(fit) - mean(mtcars$mpg))^2)
+ssr = sum((fitted(fit) - mtcars$mpg)^2)
+1 - (ssr/(sse + ssr))
 [1] 0.7528328
 
 
-D3<-data.frame(y<-c(1,2,3,4,5,6,7,8),cs<-c(7,4,6,8,6,6,2,9),
-rs<-c(5,5,3,4,4,7,2,2),
-ns<-c(2,4,7,1,2,1,5,5))
-aov.ex3 = aov(y~cs*rs*ns,data=D3)
-summary(aov.ex3)
-print(model.tables(aov.ex3,"means"),digits=3)       #report the means and the number of subjects/cell
-boxplot(y~cs*rs*ns,data=D3)          #graphical output
 
