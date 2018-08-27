@@ -32,13 +32,11 @@ This is just a special case of the general rule stating that the null hypothesis
 
 #The null hypothesis attempts to show that no variation exists between variables or that a single variable is no different than its mean. It is presumed to be true until statistical evidence nullifies it for an alternative hypothesis.
 
-#Okay, let’s say you interviewed a potential salesperson and found that they had 13 ears of education (they took 1 year of college after high school) and they scored 49 on hat would be your prediction of how much money in sales this person would bring in on an annual basis? 
+#Okay, let’s say you interviewed a potential salesperson and found that they had 13 years of education (they took 1 year of college after high school) and they scored 49 on hat would be your prediction of how much money in sales this person would bring in on an annual basis? 
 
 Y = 60,049.195 + (34,356.085)(13) + (-3,657.213)(49)
 
-So, given a job applicant with 13 years of education completed and who received a
-motivation score of 49 on the Higgins Motivation Scale, our single best prediction of how
-uch this person will earn for our dealership is $685,881.74. 
+So, given a job applicant with 13 years of education completed and who received a motivation score of 49 on the Higgins Motivation Scale, our single best prediction of how such this person will earn for our dealership is $685,881.74. 
 
 anova(fit) #Análise da variância: estimativas de dispersão/variAncia
 
@@ -47,12 +45,12 @@ anova(fit) #Análise da variância: estimativas de dispersão/variAncia
 
 #Teste F: Sob a hipotese nula, que as medias são iguais, tanto SE^2 quanto SD^2 estimam a variancia comum σ2, e F deve estar proximo de 1.
 
-#Se existe uma diferenc¸a entre as populaçoes, entao a variancia entre os grupos e maior que a vari ´ ancia dentro dos grupos, e ˆ F e´
+#Se existe uma diferenc¸a entre as populaçoes, entao a variancia entre os grupos e maior que a variância dentro dos grupos, e ˆ F e´
 maior que 1.X vezes maior/menor que a variabilidade dentro dos grupos.
 
-# Example: Uma vez que o p-value é aproximadamente zero⇒ rejeitamos a hipótese nula de igualdade de médias para qualquer nível de significância.Assim, a ANOVA permite concluir: para q.q. nível de significância, as médias dos vários grupos não são todas iguais, o que quer dizer que existem diferenças significativas no desempenho da aprendizagem das três listas de palavras. 
+# Example: Uma vez que o p-value é aproximadamente zero⇒ rejeitamos a hipótese nula de igualdade de médias para qualquer nível de significância. Assim, a ANOVA permite concluir: para q.q. nível de significância, as médias dos vários grupos não são todas iguais, o que quer dizer que existem diferenças significativas no desempenho da aprendizagem das três listas de palavras. 
 
-# Localizar as diferenças através de técnicas de comparações múltiplas: métodos de Tukey, Scheffé, Bonferroni: Comparar os grupos de dois a dois por meio de intervalos deconfiança para a diferença. Se o intervalo não contém o zero, podemos obter conclusões sobre a razão da rejeição.
+# Localizar as diferenças através de técnicas de comparações múltiplas: métodos de Tukey, Scheffé, Bonferroni: Comparar os grupos de dois a dois por meio de intervalos de confiança para a diferença. Se o intervalo não contém o zero, podemos obter conclusões sobre a razão da rejeição.
 
 #If the P value for the F-test of overall significance test is less than your significance level, you can reject the null-hypothesis and conclude that your model provides a better fit than the intercept-only model.
 
