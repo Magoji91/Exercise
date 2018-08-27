@@ -12,13 +12,7 @@ column percentages (which add to 100% for each column) and/or cell percentages (
 Obs.: Cross-tabulation can be extended to three (and sometimes more) variables by making separate
 two-way tables for two variables at each level of a third variable.
 
-ANOVA: For one categorical variable (usually explanatory) and one quantitative variable (usually outcome),
-it is common to produce some of the standard univariate non- graphical statistics for the
-quantitative variables separately for each level of the categorical variable, and then compare the
-statistics across levels of the categorical variable. Comparing the means is an informal version
-of ANOVA. Comparing medians is a robust informal version of one-way ANOVA. Comparing
-measures of spread is a good informal test of the assumption of equal variances needed for valid
-analysis of variance.
+ANOVA: For one categorical variable (usually explanatory) and one quantitative variable (usually outcome), it is common to produce some of the standard univariate non- graphical statistics for the quantitative variables separately for each level of the categorical variable, and then compare the statistics across levels of the categorical variable. Comparing the means is an informal version of ANOVA. Comparing medians is a robust informal version of one-way ANOVA. Comparing measures of spread is a good informal test of the assumption of equal variances needed for valid analysis of variance.
 
 Correlation and covariance: For two quantitative variables, the basic statistics of interest are the sample co- variance and/or
 sample correlation, which correspond to and are estimates of the corresponding population
